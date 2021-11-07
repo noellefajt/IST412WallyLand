@@ -1,32 +1,35 @@
 package TicketPackage;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import javax.swing.*;
 
 public class mainPanel extends JPanel{
     
-    private centerPanel cp;
+    private centerTestPanel cp;
     private NorthPanel np;
 
-    public mainPanel()
+    public mainPanel(ArrayList<ArrayList<String>> arr)
     {
         super();
         setBackground(Color.yellow);
         BorderLayout bl = new BorderLayout();
         setLayout(bl);
-        cp = new centerPanel();
+        cp = new centerTestPanel(arr);
         np = new NorthPanel();
         add(cp, BorderLayout.CENTER);
         add(np, BorderLayout.NORTH);
 
     }
 
-    public centerPanel getCp()
+    public centerTestPanel getCp()
     {
         return cp;
     }
 
-    public void setCp(centerPanel cp)
+    public void setCp(centerTestPanel cp)
     {
         this.cp = cp;
     }

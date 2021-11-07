@@ -6,6 +6,7 @@
 package TicketPackage;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.awt.event.*;
 /**
  *
@@ -14,16 +15,22 @@ import java.awt.event.*;
 public class TicketController {
     private TicketModel md;
     private TicketView vw;
+    ArrayList<ArrayList<String>> ticketArray;
     /**
     *Constructor for ticket controller, takes in a ticket model object
     *@param model TicketModel object
     */
-    public TicketController(TicketModel model, TicketView view){
+    public TicketController(TicketModel model){
         this.md = model;
-        this.vw = view;
         makeTickets();
+<<<<<<< Updated upstream
         vw.initialsetup(5, md.getTickets().size());
         vw.displayButtons(md.getTickets(), md.getHeaders());
+=======
+        this.ticketArray = createTicketToString();
+        this.vw = new TicketView(ticketArray);
+        vw.initialsetup();
+>>>>>>> Stashed changes
     }
     /**
     *depending on the input from ticketPrompt method in ticket view
@@ -38,6 +45,19 @@ public class TicketController {
     }
     public ArrayList<Ticket> getTickets(){
         return md.getTickets();
+    }
+    public ArrayList<ArrayList<String>> createTicketToString(){
+        ArrayList<ArrayList<String>> ticketArray = new ArrayList<ArrayList<String>>();
+        for(int i = 0; i < md.getTickets().size(); i++){
+            ArrayList<String> ticketToString = new ArrayList<String>(Arrays.asList(
+                String.valueOf(md.getTickets().get(i).getPrice()),
+                md.getTickets().get(i).getRide(),
+                md.getTickets().get(i).getTime(),
+                md.getTickets().get(i).getType()
+                ));
+                ticketArray.add(ticketToString);
+        }
+        return ticketArray;
     }
   
 }

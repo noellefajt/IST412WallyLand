@@ -21,4 +21,6 @@ interface Ticket {
     public String getRide();
 
     public String getTime();
+
+    public void setPurchased(boolean b);
 }
