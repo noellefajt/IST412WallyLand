@@ -44,6 +44,9 @@ public class FivePersonTicket implements Ticket {
     public String getID() {
         return this.ID;
     }
+    public int getPeople(){
+        return this.people;
+    }
     public int getPrice() {
         return this.price;
     }

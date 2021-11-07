@@ -43,5 +43,8 @@ public class centerTestPanel extends JPanel {
         }
             
     }
+    public int getSelectedRow(){
+        return this.ticketTable.getSelectedRow();
+    }
 
 }

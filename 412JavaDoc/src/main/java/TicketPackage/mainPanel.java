@@ -10,6 +10,7 @@ public class mainPanel extends JPanel{
     
     private centerTestPanel cp;
     private NorthPanel np;
+    private southPanel sp;
 
     public mainPanel(ArrayList<ArrayList<String>> arr)
     {
@@ -19,8 +20,10 @@ public class mainPanel extends JPanel{
         setLayout(bl);
         cp = new centerTestPanel(arr);
         np = new NorthPanel();
+        sp = new southPanel();
         add(cp, BorderLayout.CENTER);
         add(np, BorderLayout.NORTH);
+        add(sp, BorderLayout.SOUTH);
 
     }
 
@@ -28,7 +31,9 @@ public class mainPanel extends JPanel{
     {
         return cp;
     }
-
+    public southPanel getSp(){
+        return this.sp;
+    }
     public void setCp(centerTestPanel cp)
     {
         this.cp = cp;

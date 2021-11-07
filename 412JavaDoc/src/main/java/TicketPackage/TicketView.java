@@ -17,27 +17,14 @@ public class TicketView {
     *takes a ticket controller object
     *@param contr ticketController object
     */
-<<<<<<< Updated upstream
-    public TicketView(){
-        this.mf = new MainFrame();
-=======
     public TicketView(ArrayList<ArrayList<String>> arr){
         this.mf = new MainFrame(arr);
->>>>>>> Stashed changes
+
     }
     public MainFrame getMf(){
         return this.mf;
     }
-<<<<<<< Updated upstream
-    public void initialsetup(int col, int lin){
-        mf.getMjp().getCp().createMoreButtons(col, lin);
-        
-    }
-    public void displayButtons(ArrayList<Ticket> tickets, ArrayList<String> headers)
-    {
-        mf.getMjp().getCp().displayDataOnButtons(tickets, headers);
-    }
-=======
+
     public void initialsetup(){
         this.mf.getMjp().getCp();
         
@@ -56,6 +43,5 @@ public class TicketView {
     // public void displayTestLayout(){
     //     new testFrame();
     // }
->>>>>>> Stashed changes
 
 }

@@ -1,13 +1,11 @@
 package TicketPackage;
 
-import java.awt.Color;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 //import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 public class NorthPanel extends JPanel {
     private JCheckBox singleTickets;

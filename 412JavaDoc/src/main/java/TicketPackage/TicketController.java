@@ -23,14 +23,11 @@ public class TicketController {
     public TicketController(TicketModel model){
         this.md = model;
         makeTickets();
-<<<<<<< Updated upstream
-        vw.initialsetup(5, md.getTickets().size());
-        vw.displayButtons(md.getTickets(), md.getHeaders());
-=======
         this.ticketArray = createTicketToString();
         this.vw = new TicketView(ticketArray);
+        addActionListener();
         vw.initialsetup();
->>>>>>> Stashed changes
+
     }
     /**
     *depending on the input from ticketPrompt method in ticket view
@@ -46,18 +43,57 @@ public class TicketController {
     public ArrayList<Ticket> getTickets(){
         return md.getTickets();
     }
+    public ArrayList<String> addSingleTickets(){
+        ArrayList<String> arr = new ArrayList<String>();
+        for(int i = 0; i < md.getTickets().size(); i++){
+            if(md.getTickets().get(i).getPeople() == 1){
+                arr.add(String.valueOf(md.getTickets().get(i).getPrice()));
+                arr.add(md.getTickets().get(i).getRide());
+                arr.add(md.getTickets().get(i).getTime());
+                arr.add(md.getTickets().get(i).getType());
+            }
+        }
+        return arr;
+    }
+    public ArrayList<String> addThreePersonTickets(){
+        ArrayList<String> arr = new ArrayList<String>();
+        for(int i = 0; i < md.getTickets().size(); i++){
+            if(md.getTickets().get(i).getPeople() == 3){
+                arr.add(String.valueOf(md.getTickets().get(i).getPrice()));
+                arr.add(md.getTickets().get(i).getRide());
+                arr.add(md.getTickets().get(i).getTime());
+                arr.add(md.getTickets().get(i).getType());
+            }
+        }
+        return arr;
+    }
+    public ArrayList<String> addFivePersonTickets(){
+        ArrayList<String> arr = new ArrayList<String>();
+        for(int i = 0; i < md.getTickets().size(); i++){
+            if(md.getTickets().get(i).getPeople() == 5){
+                arr.add(String.valueOf(md.getTickets().get(i).getPrice()));
+                arr.add(md.getTickets().get(i).getRide());
+                arr.add(md.getTickets().get(i).getTime());
+                arr.add(md.getTickets().get(i).getType());
+            }
+        }
+        return arr;
+    }
     public ArrayList<ArrayList<String>> createTicketToString(){
         ArrayList<ArrayList<String>> ticketArray = new ArrayList<ArrayList<String>>();
-        for(int i = 0; i < md.getTickets().size(); i++){
-            ArrayList<String> ticketToString = new ArrayList<String>(Arrays.asList(
-                String.valueOf(md.getTickets().get(i).getPrice()),
-                md.getTickets().get(i).getRide(),
-                md.getTickets().get(i).getTime(),
-                md.getTickets().get(i).getType()
-                ));
-                ticketArray.add(ticketToString);
-        }
+        ticketArray.add(addSingleTickets());
+        ticketArray.add(addThreePersonTickets());
+        ticketArray.add(addFivePersonTickets());
         return ticketArray;
+    }
+    private void addActionListener(){
+        vw.getMf().getMjp().getSp().getPurchaseButton().addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) { 
+                int selectedRow = vw.getMf().getMjp().getCp().getSelectedRow();
+                md.getTickets().get(selectedRow).setPurchased(true);
+                md.addPurchasedTicket(md.getTickets().get(selectedRow));
+            } 
+        });
     }
   
 }

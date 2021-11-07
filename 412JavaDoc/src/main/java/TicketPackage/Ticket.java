@@ -12,6 +12,8 @@ package TicketPackage;
 interface Ticket {
     public void scan();
 
+    public int getPeople();
+
     public String getType();
 
     public int getPrice();
