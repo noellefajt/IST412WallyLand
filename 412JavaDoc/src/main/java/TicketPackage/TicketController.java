@@ -15,6 +15,7 @@ import java.awt.event.*;
 public class TicketController {
     private TicketModel md;
     private TicketView vw;
+    private TicketViewer tv;
     ArrayList<ArrayList<String>> ticketArray;
     /**
     *Constructor for ticket controller, takes in a ticket model object
@@ -27,6 +28,7 @@ public class TicketController {
         this.vw = new TicketView(ticketArray);
         addPurchaseActionListener();
         addSearchActionListener();
+        addShowTicketsActionListener();
         vw.initialsetup();
 
     }
@@ -113,6 +115,17 @@ public class TicketController {
                     ticketArray.add(addFivePersonTickets());
                 }
                 vw.updateCp(ticketArray);
+            } 
+        });
+    }
+    
+    private void addShowTicketsActionListener(){ 
+        vw.getMf().getMjp().getSp().getShowTicketsButton().addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) { 
+                TicketViewer tv = new TicketViewer();
+                tv.populatePurchasedTicketsArray(md.getPurchasedTickets());
+                tv.setVisible(true);
+              
             } 
         });
     }
