@@ -102,6 +102,7 @@ public class TicketController {
                 int selectedTicketRow = md.getTickets().indexOf(selectedTicket);
                 md.getTickets().get(selectedTicketRow).setPurchased(true);
                 md.addPurchasedTicket(md.getTickets().get(selectedTicketRow));
+                vw.showConfirmationMessage();
             } 
         });
     }

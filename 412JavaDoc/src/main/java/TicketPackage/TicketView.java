@@ -6,6 +6,8 @@
 package TicketPackage;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.swing.JOptionPane;
 /**
  *
  * @author Dylan
@@ -31,6 +33,9 @@ public class TicketView {
     }
     public void updateCp(ArrayList<ArrayList<String>> arr){
         this.mf.getMjp().getCp().updateScreen(arr);
+    }
+    public void showConfirmationMessage(){
+        int input = JOptionPane.showConfirmDialog(null,"Purchase Succesful","OK",JOptionPane.DEFAULT_OPTION);
     }
     // public void initialsetup(int col, int lin){
     //     mf.getMjp().getCp().createMoreButtons(col, lin);
