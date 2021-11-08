@@ -16,13 +16,15 @@ public class TicketController {
     private TicketModel md;
     private TicketView vw;
     private TicketViewer tv;
-    ArrayList<ArrayList<String>> ticketArray;
+    private ArrayList<Ticket> ticketTracker;
+    private ArrayList<ArrayList<String>> ticketArray;
     /**
     *Constructor for ticket controller, takes in a ticket model object
     *@param model TicketModel object
     */
     public TicketController(TicketModel model){
         this.md = model;
+        this.ticketTracker = new ArrayList<Ticket>();
         makeTickets();
         this.ticketArray = createTicketToString();
         this.vw = new TicketView(ticketArray);
@@ -54,6 +56,7 @@ public class TicketController {
                 arr.add(md.getTickets().get(i).getRide());
                 arr.add(md.getTickets().get(i).getTime());
                 arr.add(md.getTickets().get(i).getType());
+                this.ticketTracker.add(md.getTickets().get(i));
             }
         }
         return arr;
@@ -66,6 +69,7 @@ public class TicketController {
                 arr.add(md.getTickets().get(i).getRide());
                 arr.add(md.getTickets().get(i).getTime());
                 arr.add(md.getTickets().get(i).getType());
+                this.ticketTracker.add(md.getTickets().get(i));
             }
         }
         return arr;
@@ -78,6 +82,7 @@ public class TicketController {
                 arr.add(md.getTickets().get(i).getRide());
                 arr.add(md.getTickets().get(i).getTime());
                 arr.add(md.getTickets().get(i).getType());
+                this.ticketTracker.add(md.getTickets().get(i));
             }
         }
         return arr;
@@ -93,14 +98,17 @@ public class TicketController {
         vw.getMf().getMjp().getSp().getPurchaseButton().addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 int selectedRow = vw.getMf().getMjp().getCp().getSelectedRow();
-                md.getTickets().get(selectedRow).setPurchased(true);
-                md.addPurchasedTicket(md.getTickets().get(selectedRow));
+                Ticket selectedTicket = ticketTracker.get(selectedRow);
+                int selectedTicketRow = md.getTickets().indexOf(selectedTicket);
+                md.getTickets().get(selectedTicketRow).setPurchased(true);
+                md.addPurchasedTicket(md.getTickets().get(selectedTicketRow));
             } 
         });
     }
     private void addSearchActionListener(){
         vw.getMf().getMjp().getNp().getSearchButton().addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
+                ticketTracker = new ArrayList<Ticket>();
                 ArrayList<ArrayList<String>> ticketArray = new ArrayList<ArrayList<String>>();
                 if(vw.getMf().getMjp().getNp().singleTickets()){
                    
@@ -122,8 +130,8 @@ public class TicketController {
     private void addShowTicketsActionListener(){ 
         vw.getMf().getMjp().getSp().getShowTicketsButton().addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
-                TicketViewer tv = new TicketViewer();
-                tv.populatePurchasedTicketsArray(md.getPurchasedTickets());
+                TicketViewer tv = new TicketViewer(md.getPurchasedTickets());
+                //tv.populatePurchasedTicketsArray(md.getPurchasedTickets());
                 tv.setVisible(true);
               
             } 
