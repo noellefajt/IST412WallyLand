@@ -50,4 +50,8 @@ public class TicketModel {
         this.purchasedTickets.add(ticket);
 
     }
+    
+    public ArrayList<Ticket> getPurchasedTickets(){
+        return this.purchasedTickets;
+    }
 }
