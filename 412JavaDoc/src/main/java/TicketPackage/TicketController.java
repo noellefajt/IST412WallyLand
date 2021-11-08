@@ -25,7 +25,8 @@ public class TicketController {
         makeTickets();
         this.ticketArray = createTicketToString();
         this.vw = new TicketView(ticketArray);
-        addActionListener();
+        addPurchaseActionListener();
+        addSearchActionListener();
         vw.initialsetup();
 
     }
@@ -86,12 +87,32 @@ public class TicketController {
         ticketArray.add(addFivePersonTickets());
         return ticketArray;
     }
-    private void addActionListener(){
+    private void addPurchaseActionListener(){
         vw.getMf().getMjp().getSp().getPurchaseButton().addActionListener(new ActionListener() { 
             public void actionPerformed(ActionEvent e) { 
                 int selectedRow = vw.getMf().getMjp().getCp().getSelectedRow();
                 md.getTickets().get(selectedRow).setPurchased(true);
                 md.addPurchasedTicket(md.getTickets().get(selectedRow));
+            } 
+        });
+    }
+    private void addSearchActionListener(){
+        vw.getMf().getMjp().getNp().getSearchButton().addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent e) { 
+                ArrayList<ArrayList<String>> ticketArray = new ArrayList<ArrayList<String>>();
+                if(vw.getMf().getMjp().getNp().singleTickets()){
+                   
+                    ticketArray.add(addSingleTickets());
+                }
+                if(vw.getMf().getMjp().getNp().threePersonTickets()){
+                   
+                    ticketArray.add(addThreePersonTickets());
+                }
+                if(vw.getMf().getMjp().getNp(). fivePersonTickets()){
+                   
+                    ticketArray.add(addFivePersonTickets());
+                }
+                vw.updateCp(ticketArray);
             } 
         });
     }

@@ -4,7 +4,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class centerTestPanel extends JPanel {
     
@@ -32,14 +31,15 @@ public class centerTestPanel extends JPanel {
             this.tm = new tableModel(arr);
             this.ticketTable = new JTable(tm);
             this.scrollPane = new JScrollPane(ticketTable);
-            this.add(scrollPane);
+            this.add(this.scrollPane);
         }
         else{
             this.remove(scrollPane);
             this.tm = new tableModel(arr);
             this.ticketTable = new JTable(tm);
             this.scrollPane = new JScrollPane(ticketTable);
-            this.add(scrollPane);
+            this.add(this.scrollPane);
+            this.revalidate();
         }
             
     }
