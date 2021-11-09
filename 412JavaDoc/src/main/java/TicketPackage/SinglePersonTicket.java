@@ -10,14 +10,18 @@ public class SinglePersonTicket implements Ticket {
     private String ID;
     private String type;
     private Boolean used;
+    private int people;
+    private Boolean purchased;
     
     public SinglePersonTicket(int price, String ride, LocalDate time, String ID){
         this.price = price;
         this.time = time;
         this.ride = ride;
         this.ID = ID;
+        this.people = 1;
         this.type = "Single Person";
         this.used = false;
+        this.purchased = false;
     }
 
     public void scan(){
@@ -25,6 +29,9 @@ public class SinglePersonTicket implements Ticket {
     }
     public String getID() {
         return this.ID;
+    }
+    public int getPeople(){
+        return this.people;
     }
     public int getPrice() {
         return this.price;
@@ -60,5 +67,10 @@ public class SinglePersonTicket implements Ticket {
     }
     public void setUsed(Boolean used) {
         this.used = used;
+    }
+    @Override
+    public void setPurchased(boolean b) {
+        this.purchased = b;
+        
     }
 }

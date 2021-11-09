@@ -12,6 +12,7 @@ public class FivePersonTicket implements Ticket {
     private String type;
     private int people;
     private Boolean used;
+    private Boolean purchased;
 
     public FivePersonTicket(int price, String ride, LocalDate time, String ID){
         this.price = price;
@@ -21,6 +22,7 @@ public class FivePersonTicket implements Ticket {
         this.people = 5;
         this.type = "Five Person";
         this.used = false;
+        this.purchased = false;
     }
     public void scan(){
         while(this.people < 5 && !used){
@@ -38,8 +40,12 @@ public class FivePersonTicket implements Ticket {
             }
         }
     }
+   
     public String getID() {
         return this.ID;
+    }
+    public int getPeople(){
+        return this.people;
     }
     public int getPrice() {
         return this.price;
@@ -75,5 +81,10 @@ public class FivePersonTicket implements Ticket {
     }
     public void setUsed(Boolean used) {
         this.used = used;
+    }
+    @Override
+    public void setPurchased(boolean b) {
+        this.purchased = b;
+        
     }
 }

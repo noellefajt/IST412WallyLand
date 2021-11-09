@@ -1,26 +1,22 @@
 package TicketPackage;
 
-import java.awt.Color;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
 //import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 
 public class NorthPanel extends JPanel {
     private JCheckBox singleTickets;
     private JCheckBox threePersonTickets;
     private JCheckBox fivePersonTickets;
     private JButton search;
-    private ButtonGroup radioButtonGroup;
     
     public NorthPanel(){
         this.singleTickets = new JCheckBox();
         this.threePersonTickets = new JCheckBox();
         this.fivePersonTickets = new JCheckBox();
-        this.radioButtonGroup = new ButtonGroup();
         this.search = new JButton();
         this.search.setText("Search");
         this.singleTickets.setText("Single Ticket");
@@ -30,16 +26,18 @@ public class NorthPanel extends JPanel {
         add(this.threePersonTickets);
         add(this.fivePersonTickets);
         add(this.search);
-        // this.radioButtonGroup.add(this.singleTickets);
-        // this.radioButtonGroup.add(this.threePersonTickets);
-        // this.radioButtonGroup.add(this.fivePersonTickets);
     }
 
     public JButton getSearchButton(){
         return this.search;
     }
-    public ButtonGroup getButtonGroup(){
-        return this.radioButtonGroup;
+    public boolean singleTickets(){
+        return singleTickets.isSelected();
     }
-    
+    public boolean threePersonTickets(){
+        return threePersonTickets.isSelected();
+    }
+    public boolean fivePersonTickets(){
+        return fivePersonTickets.isSelected();
+    }
 }

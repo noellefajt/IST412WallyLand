@@ -12,6 +12,7 @@ import java.util.Arrays;
  */
 public class TicketModel {
     private ArrayList<Ticket> tickets;
+    private ArrayList<Ticket> purchasedTickets;
     private ArrayList<String> headers;
     /**
     *Constructor for ticket model creates ticket model object initiallized with 2 array lists, one empty array that takes ticket objects
@@ -20,7 +21,7 @@ public class TicketModel {
     public TicketModel(){
         this.tickets = new ArrayList<Ticket>();
         this.headers = new ArrayList<>(Arrays.asList("ticket type","price","ride","time","ID"));
-
+        this.purchasedTickets = new ArrayList<Ticket>();
     }
     /**
     *adds ticket to the ticket array list
@@ -40,5 +41,17 @@ public class TicketModel {
      */
     public ArrayList<Ticket> getTickets(){
         return this.tickets;
+    }
+    /**
+     adds existing ticket to purchased array
+     */
+    public void addPurchasedTicket(Ticket ticket){
+        ticket.setPurchased(true);
+        this.purchasedTickets.add(ticket);
+
+    }
+    
+    public ArrayList<Ticket> getPurchasedTickets(){
+        return this.purchasedTickets;
     }
 }

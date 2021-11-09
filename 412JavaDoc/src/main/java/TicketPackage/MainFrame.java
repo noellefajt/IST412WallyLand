@@ -1,6 +1,8 @@
 package TicketPackage;
 
 import java.awt.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -8,10 +10,10 @@ public class MainFrame extends JFrame {
     
     private mainPanel mjp;
 
-    public MainFrame() {
+    public MainFrame(ArrayList<ArrayList<String>> arr) {
         super("");
         LayoutSetupMAC();
-        mjp = new mainPanel();
+        mjp = new mainPanel(arr);
         this.add(mjp);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(640, 480);

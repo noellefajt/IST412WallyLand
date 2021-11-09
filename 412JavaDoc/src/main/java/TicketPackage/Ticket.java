@@ -12,6 +12,8 @@ package TicketPackage;
 interface Ticket {
     public void scan();
 
+    public int getPeople();
+
     public String getType();
 
     public int getPrice();
@@ -21,4 +23,6 @@ interface Ticket {
     public String getRide();
 
     public String getTime();
+
+    public void setPurchased(boolean b);
 }
