@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import TicketPackage.TicketController;
 import TicketPackage.TicketModel;
 import TicketPackage.TicketView;
+import RestaurantReservation.RestaurantBrowseCntl;
+import RestaurantReservation.RestaurantsBrowseUI;
+
 /**
  *
  * @author noellefajt
@@ -22,6 +25,8 @@ public class homeController implements ActionListener{
     TicketController TicketController;
     TicketModel TicketModel;
     TicketView TicketView;
+    RestaurantBrowseCntl RestaurantsCntl;
+    RestaurantsBrowseUI RestaurantsView;
     //loginUI = new LoginUI(this);
      //homeScreen userSearchCntl = new homeScreen(this);
     //homeScreen = new homeScreen(this);
@@ -44,9 +49,16 @@ public class homeController implements ActionListener{
        
         if(obj == homeScreen.tixbtn){
             TicketModel model = new TicketModel();
-            TicketView view = new TicketView();
-            TicketController = new TicketController(model, view);
+            //TicketView view = new TicketView();
+            TicketController = new TicketController(model);
             
+        }
+        else if(obj == homeScreen.resbtn){
+            //TicketModel model = new TicketModel();
+            //RestaurantsView.setVisible(true);
+            
+            //TicketView view = new TicketView();
+           // RestaurantBrowseCntl = new RestaurantBrowseCntl();
         }
      }
 }
